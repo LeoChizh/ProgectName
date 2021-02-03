@@ -21,7 +21,10 @@ namespace ProgectName
 
         private void button_OK_Click(object sender, EventArgs e)
         {
-            OnRaiseCustomEvent(new CustomEventArgs("Event triggered"));
+            int code = 0;
+            Int32.TryParse(this.textBox2.Text, out code);
+            OnRaiseCustomEvent(new CustomEventArgs(this.textBox1.Text.ToString(), code));
+            this.Close();
         }
 
         protected virtual void OnRaiseCustomEvent(CustomEventArgs e)
@@ -35,7 +38,7 @@ namespace ProgectName
             if (raiseEvent != null)
             {
                 // Format the string to send inside the CustomEventArgs parameter
-                e.Message += $" at {DateTime.Now}";
+                
 
                 // Call to raise the event.
                 raiseEvent(this, e);

@@ -6,12 +6,14 @@ namespace ProgectName
 {
     public class CustomEventArgs : EventArgs
     {
-        public CustomEventArgs(string message)
+        public CustomEventArgs(string itemName, int code)
         {
-            Message = message;
+            ItemName = itemName;
+            Code = code;
         }
 
-        public string Message { get; set; }
+        public string ItemName { get; set; }
+        public int Code { get; set; }
     }
 
 }
