@@ -17,7 +17,13 @@ namespace ProgectName
         {
             InitializeComponent();
             this.formAddButton = new AddButton();
+            formAddButton.RaiseCustomEvent += FormAddButton_RaiseCustomEvent;
            
+        }
+
+        private void FormAddButton_RaiseCustomEvent(object sender, CustomEventArgs e)
+        {
+            label1.Text = e.Message;
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
