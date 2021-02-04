@@ -14,7 +14,7 @@ namespace ProgectName
     public partial class Form1 : Form
     {
         const string WarningText = "Внимание! Включен режим удаления кнопок";
-
+       
         private AddButton formAddButton;
         private List<Button> itemsButtons;
 
@@ -22,6 +22,7 @@ namespace ProgectName
 
         public Form1()
         {
+         
             InitializeComponent();
             itemsButtons = new List<Button>();
             Warning.Text = string.Empty;
@@ -30,12 +31,10 @@ namespace ProgectName
         private void FormAddButton_RaiseCustomEvent(object sender, CustomEventArgs e)
 
         {
-
-            label1.Text = e.ItemName + "\ncode " + e.Code;
-            label1.Text = e.ItemName + "\ncode " + e.Code;
+            label1.Text = e.ItemName + "\ncode " + e.ButtonName;
             Button button = new Button();
             button.Text = e.ItemName;
-            button.Name = e.Code.ToString();
+            button.Name = e.ButtonName;
             itemsButtons.Add(button);
         }
 
@@ -50,6 +49,7 @@ namespace ProgectName
 
                 formAddButton.Visible = true;
             }
+            // used this to refresh buttons 
             if (e.ClickedItem.Name == "refresh")
             {
                 label1.Text = null;

@@ -23,11 +23,12 @@ namespace ProgectName
 
         private void button_OK_Click(object sender, EventArgs e)
         {
-            int code;
-            int.TryParse(textBox2.Text, out code);
-            OnRaiseCustomEvent(new CustomEventArgs(textBox1.Text.ToString(), code));
+            //int code;
+            //int.TryParse(textBox2.Text, out code);
+            string buttonName = Functions.CreateButtonName(WriteAndRead.NumberOfButtonsInConfigFile());
+            OnRaiseCustomEvent(new CustomEventArgs(textBox1.Text.ToString(),buttonName ));
 
-            WriteAndRead.Write(textBox1.Text + "\t" + code);
+            WriteAndRead.Write(textBox1.Text + "\t" + buttonName);
 
             Close();
         }
