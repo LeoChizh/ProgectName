@@ -6,14 +6,16 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
+
 namespace ProgectName
 {
     public partial class AddButton : Form
     {
+
+
         public AddButton()
         {
             InitializeComponent();
-            
         }
 
         public delegate void CustomEventHandler(object sender, CustomEventArgs args);
@@ -21,10 +23,13 @@ namespace ProgectName
 
         private void button_OK_Click(object sender, EventArgs e)
         {
-            int code = 0;
-            Int32.TryParse(this.textBox2.Text, out code);
-            OnRaiseCustomEvent(new CustomEventArgs(this.textBox1.Text.ToString(), code));
-            this.Close();
+            int code;
+            int.TryParse(textBox2.Text, out code);
+            OnRaiseCustomEvent(new CustomEventArgs(textBox1.Text.ToString(), code));
+
+            WriteAndRead.Write(textBox1.Text + "\t" + code);
+
+            Close();
         }
 
         protected virtual void OnRaiseCustomEvent(CustomEventArgs e)
@@ -43,6 +48,11 @@ namespace ProgectName
                 // Call to raise the event.
                 raiseEvent(this, e);
             }
+        }
+
+        private void button_Cancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
