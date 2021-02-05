@@ -18,27 +18,27 @@ namespace ProgectName
             InitializeComponent();
         }
 
-        public delegate void CustomEventHandler(object sender, CustomEventArgs args);
-        public event EventHandler<CustomEventArgs> RaiseCustomEvent;
+        public delegate void CustomEventHandler(object sender, EventArgs e);
+        public event EventHandler RaiseCustomEvent;
 
         private void button_OK_Click(object sender, EventArgs e)
         {
             //int code;
             //int.TryParse(textBox2.Text, out code);
-            string buttonName = Functions.CreateButtonName(WriteAndRead.NumberOfButtonsInConfigFile());
-            OnRaiseCustomEvent(new CustomEventArgs(textBox1.Text.ToString(),buttonName ));
+            string buttonName = Functions.CreateButtonName(FileFunctions.NumberOfButtonsInConfigFile());
+            OnRaiseCustomEvent(new EventArgs() );
 
-            WriteAndRead.Write(textBox1.Text + "\t" + buttonName);
+            FileFunctions.Write(textBox1.Text + "\t" + buttonName);
 
             Close();
         }
-
-        protected virtual void OnRaiseCustomEvent(CustomEventArgs e)
+        
+        protected virtual void OnRaiseCustomEvent(EventArgs e)
         {
             // Make a temporary copy of the event to avoid possibility of
             // a race condition if the last subscriber unsubscribes
             // immediately after the null check and before the event is raised.
-            EventHandler<CustomEventArgs> raiseEvent = RaiseCustomEvent;
+            EventHandler raiseEvent = RaiseCustomEvent;
 
             // Event will be null if there are no subscribers
             if (raiseEvent != null)
@@ -50,7 +50,7 @@ namespace ProgectName
                 raiseEvent(this, e);
             }
         }
-
+        
         private void button_Cancel_Click(object sender, EventArgs e)
         {
             Close();

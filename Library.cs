@@ -7,18 +7,9 @@ using System.Windows.Forms;
 
 namespace ProgectName
 {
-    public class CustomEventArgs : EventArgs
-    {
-        public CustomEventArgs(string itemName, string buttonName)
-        {
-            ItemName = itemName;
-            ButtonName = buttonName;
-        }
-
-        public string ItemName { get; set; }
-        public string ButtonName { get; set; }
-    }
-    public static class WriteAndRead
+    
+      
+    public static class FileFunctions
     {
 
         const string _path = "Config.txt";
@@ -66,27 +57,33 @@ namespace ProgectName
 
         public static void DeleteString(string s)
         {
-            var str = "temp.txt";
+            string tempFile = "temp.txt";
             StreamReader sr = new StreamReader(new FileStream(_path, FileMode.Open));
-            StreamWriter sw = new StreamWriter(str);
-            var cnt = 0;
-
+            StreamWriter sw = new StreamWriter(tempFile);
+            int i = 0;
+            
             while (!sr.EndOfStream)
             {
-                var temp = sr.ReadLine();
-
-                cnt++;
-                if (temp == s)
-                    continue;
-                sw.WriteLine(temp);
+                string temp = sr.ReadLine();
+                if (temp != s)
+                {
+                    
+                    int inOf = temp.IndexOf('\t');
+                    temp = temp.Substring(0,inOf);
+                    temp = temp + '\t' + Functions.CreateButtonName(i);
+                    i++;
+                    sw.WriteLine(temp);
+                }
+                
+                
             }
 
             sr.Close();
             sw.Close();
 
             File.Delete(_path);
-            File.Copy(str, _path);
-            File.Delete(str);
+            File.Copy(tempFile, _path);
+            File.Delete(tempFile);
 
         }
         
