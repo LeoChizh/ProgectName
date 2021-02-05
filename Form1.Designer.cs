@@ -37,6 +37,7 @@ namespace ProgectName
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.Warning = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,9 +84,10 @@ namespace ProgectName
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(89, 82);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(606, 220);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(338, 220);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // label2
@@ -103,13 +105,21 @@ namespace ProgectName
             this.Warning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Warning.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Warning.ForeColor = System.Drawing.Color.Red;
-            this.Warning.Location = new System.Drawing.Point(89, 305);
+            this.Warning.Location = new System.Drawing.Point(89, 358);
             this.Warning.Name = "Warning";
             this.Warning.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Warning.Size = new System.Drawing.Size(606, 48);
+            this.Warning.Size = new System.Drawing.Size(338, 48);
             this.Warning.TabIndex = 5;
             this.Warning.Text = "label3";
             this.Warning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.BackColor = System.Drawing.Color.Silver;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(550, 82);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(221, 324);
+            this.flowLayoutPanel2.TabIndex = 3;
             // 
             // Form1
             // 
@@ -117,6 +127,7 @@ namespace ProgectName
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(815, 455);
+            this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.Warning);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -142,6 +153,7 @@ namespace ProgectName
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label Warning;
         private System.Windows.Forms.ToolStripMenuItem deleteBtn;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
     }
 }
 
