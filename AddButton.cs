@@ -16,9 +16,24 @@ namespace ProgectName
         public AddButton()
         {
             InitializeComponent();
+            textBox1.KeyDown += AddButton_KeyDown;
+            textBox2.KeyDown += AddButton_KeyDown;
         }
 
-    
+        private void AddButton_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && textBox2.Text.Length > 0 && textBox1.Text.Length > 0)
+            {
+                button_OK.PerformClick();
+            }
+            else if (e.KeyCode == Keys.Enter && textBox1.Text.Length > 0)
+            {
+                textBox2.Focus();
+
+            }
+
+        }
+
         public event EventHandler RaiseRefreshEvent;
 
         private void button_OK_Click(object sender, EventArgs e)
