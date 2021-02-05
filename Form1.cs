@@ -22,12 +22,15 @@ namespace ProgectName
 
         public Form1()
         {
-         
+
             InitializeComponent();
-            
+
             itemsButtons = new List<Button>();
             Warning.Text = string.Empty;
             RefreshFlowLayoutPanel();
+
+
+
         }
 
         private void FormAddButton_RaiseCustomEvent(object sender, EventArgs e)
@@ -48,7 +51,7 @@ namespace ProgectName
             {
 
                 formAddButton.Visible = true;
-                formAddButton.RaiseCustomEvent += FormAddButton_RaiseCustomEvent;
+                formAddButton.RaiseRefreshEvent += FormAddButton_RaiseCustomEvent;
             }
             if (e.ClickedItem.Name == "refresh")
             {
@@ -83,6 +86,7 @@ namespace ProgectName
                     if (flowLayoutPanel1.Controls[i].Name == s.Name)
                     { 
                         FileFunctions.DeleteString(s.Text + s.Name);
+                        RefreshFlowLayoutPanel();
                     }
                         
                 }
