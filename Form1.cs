@@ -16,7 +16,7 @@ namespace ProgectName
         const string WarningText = "Внимание! Включен режим удаления кнопок";
        
         private AddButton formAddButton;
-        private List<Button> itemsButtons;
+        private readonly List<Button> itemsButtons;
 
         private bool _isDeleted;
 
@@ -28,8 +28,7 @@ namespace ProgectName
             itemsButtons = new List<Button>();
             Warning.Text = string.Empty;
             RefreshFlowLayoutPanel();
-
-
+            
 
         }
 
@@ -41,7 +40,7 @@ namespace ProgectName
 
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void MenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
 
@@ -52,11 +51,6 @@ namespace ProgectName
 
                 formAddButton.Visible = true;
                 formAddButton.RaiseRefreshEvent += FormAddButton_RaiseCustomEvent;
-            }
-            if (e.ClickedItem.Name == "refresh")
-            {
-                RefreshFlowLayoutPanel();
-
             }
             else if (e.ClickedItem.Name == "deleteBtn")
             {
@@ -97,7 +91,7 @@ namespace ProgectName
             }
             else
             {
-                label2.Text = s.Name;
+                
                 string temp = s.Name + "\t" + s.Text + "\t" + DateTime.Now;
                 FileFunctions.WriteToBase(temp);
             }
