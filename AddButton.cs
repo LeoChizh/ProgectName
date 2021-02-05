@@ -18,27 +18,25 @@ namespace ProgectName
             InitializeComponent();
         }
 
-        public delegate void CustomEventHandler(object sender, EventArgs e);
-        public event EventHandler RaiseCustomEvent;
+    
+        public event EventHandler RaiseRefreshEvent;
 
         private void button_OK_Click(object sender, EventArgs e)
         {
             //int code;
             //int.TryParse(textBox2.Text, out code);
             string buttonName = Functions.CreateButtonName(FileFunctions.NumberOfButtonsInConfigFile());
-            OnRaiseCustomEvent(new EventArgs() );
-
             FileFunctions.Write(textBox1.Text + "\t" + buttonName);
-
+            OnRaiseRefreshEvent(new EventArgs());
             Close();
         }
         
-        protected virtual void OnRaiseCustomEvent(EventArgs e)
+        protected virtual void OnRaiseRefreshEvent(EventArgs e)
         {
             // Make a temporary copy of the event to avoid possibility of
             // a race condition if the last subscriber unsubscribes
             // immediately after the null check and before the event is raised.
-            EventHandler raiseEvent = RaiseCustomEvent;
+            EventHandler raiseEvent = RaiseRefreshEvent;
 
             // Event will be null if there are no subscribers
             if (raiseEvent != null)
