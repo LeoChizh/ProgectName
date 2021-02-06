@@ -36,14 +36,16 @@ namespace ProgectName
 
         public event EventHandler RaiseRefreshEvent;
 
-        private void button_OK_Click(object sender, EventArgs e)
+        private void Button_OK_Click(object sender, EventArgs e)
         {
-            //int code;
-            //int.TryParse(textBox2.Text, out code);
-            string buttonName = Functions.CreateButtonName(FileFunctions.NumberOfButtonsInConfigFile());
-            FileFunctions.Write(textBox1.Text + "\t" + buttonName);
-            OnRaiseRefreshEvent(new EventArgs());
-            Close();
+            if (int.TryParse(textBox2.Text, out int prise)){
+                string buttonName = Functions.CreateButtonName(FileFunctions.NumberOfButtonsInConfigFile());
+                FileFunctions.Write(textBox1.Text + "\t" + buttonName + '\t' + prise);
+                OnRaiseRefreshEvent(new EventArgs());
+                Close();
+            }
+            else 
+                MessageBox.Show("Неправильный формат цены", "Ошибка ввода", MessageBoxButtons.OK);
         }
         
         protected virtual void OnRaiseRefreshEvent(EventArgs e)
@@ -51,20 +53,10 @@ namespace ProgectName
             // Make a temporary copy of the event to avoid possibility of
             // a race condition if the last subscriber unsubscribes
             // immediately after the null check and before the event is raised.
-            EventHandler raiseEvent = RaiseRefreshEvent;
-
-            // Event will be null if there are no subscribers
-            if (raiseEvent != null)
-            {
-                // Format the string to send inside the CustomEventArgs parameter
-                
-
-                // Call to raise the event.
-                raiseEvent(this, e);
-            }
+            RaiseRefreshEvent?.Invoke(this, e);
         }
         
-        private void button_Cancel_Click(object sender, EventArgs e)
+        private void Button_Cancel_Click(object sender, EventArgs e)
         {
             Close();
         }

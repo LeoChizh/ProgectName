@@ -24,7 +24,6 @@ namespace ProgectName
         {
 
             InitializeComponent();
-
             itemsButtons = new List<Button>();
             Warning.Text = string.Empty;
             RefreshFlowLayoutPanel();
@@ -79,14 +78,12 @@ namespace ProgectName
 
                     if (flowLayoutPanel1.Controls[i].Name == s.Name)
                     { 
-                        FileFunctions.DeleteString(s.Text + s.Name);
+                        FileFunctions.DeleteString(s.Text);
                         RefreshFlowLayoutPanel();
                     }
                         
                 }
-               
-               
-               
+
                 return;
             }
             else

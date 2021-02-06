@@ -17,65 +17,51 @@ namespace ProgectName
 
         public static void Write(string s)
         {
-            using (StreamWriter sw = new StreamWriter(new FileStream(_path, FileMode.Append)))
-            {
-                sw.WriteLine(s);
-            }
+            using StreamWriter sw = new StreamWriter(new FileStream(_path, FileMode.Append));
+            sw.WriteLine(s);
         }
 
         public static void WriteToBase(string s)
         {
-            using (StreamWriter sw = new StreamWriter(new FileStream(_pathBase, FileMode.Append)))
-            {
-                sw.WriteLine(s);
-            }
+            using StreamWriter sw = new StreamWriter(new FileStream(_pathBase, FileMode.Append));
+            sw.WriteLine(s);
         }
 
         public static void Read(List<Button> example)
         {
             example.Clear();
-
             StreamReader sr = new StreamReader(new FileStream(_path, FileMode.OpenOrCreate));
-
             while (!sr.EndOfStream)
             {
                 var res = sr.ReadLine();
-                var inOff = res.IndexOf('\t');
-                if (inOff > 0)
+                string[] vs = res.Split('\t');
+                if (vs.Length ==3)
                 {
-                    var item = res.Substring(0, inOff);
-                    var code = res.Substring(inOff);
-                    Button button = new Button();
-                    button.Name = code;
-                    button.Text = item;
+                    Button button = new Button
+                    {
+                        Name = vs[1],
+                        Text = vs[0]
+                    };
                     example.Add(button);
                 }
             }
-
             sr.Close();
         }
 
-        public static void DeleteString(string s)
+        public static void DeleteString(string buttonText)
         {
             string tempFile = "temp.txt";
             StreamReader sr = new StreamReader(new FileStream(_path, FileMode.Open));
             StreamWriter sw = new StreamWriter(tempFile);
-            int i = 0;
-            
+
             while (!sr.EndOfStream)
             {
                 string temp = sr.ReadLine();
-                if (temp != s)
+                string currentButtonName = temp.Substring(0, temp.IndexOf('\t'));
+                if (currentButtonName != buttonText)
                 {
-                    
-                    int inOf = temp.IndexOf('\t');
-                    temp = temp.Substring(0,inOf);
-                    temp = temp + '\t' + Functions.CreateButtonName(i);
-                    i++;
                     sw.WriteLine(temp);
                 }
-                
-                
             }
 
             sr.Close();

@@ -79,7 +79,7 @@ namespace ProgectName
             this.button_OK.TabIndex = 4;
             this.button_OK.Text = "OK";
             this.button_OK.UseVisualStyleBackColor = true;
-            this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
+            this.button_OK.Click += new System.EventHandler(this.Button_OK_Click);
             // 
             // button_Cancel
             // 
@@ -90,7 +90,7 @@ namespace ProgectName
             this.button_Cancel.TabIndex = 5;
             this.button_Cancel.Text = "Cancel";
             this.button_Cancel.UseVisualStyleBackColor = true;
-            this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
+            this.button_Cancel.Click += new System.EventHandler(this.Button_Cancel_Click);
             // 
             // AddButton
             // 
