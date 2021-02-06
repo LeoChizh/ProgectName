@@ -58,8 +58,12 @@ namespace ProgectName
             {
                 string temp = sr.ReadLine();
                 string currentButtonName = temp.Substring(0, temp.IndexOf('\t'));
+                int i = 0;
                 if (currentButtonName != buttonText)
                 {
+                    string[] vs = temp.Split('\t');
+                    temp = vs[0] + '\t' + Functions.CreateButtonName(i) + '\t' + vs[2];
+                    i++;
                     sw.WriteLine(temp);
                 }
             }
