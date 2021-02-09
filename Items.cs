@@ -61,7 +61,22 @@ namespace ProgectName
                     items.RemoveAt(i);
             }
         }
-
+        //public int GetIndex(string name)
+        //{
+        //    int flag = -1;
+        //    for (int i = 0; i < items.Count; i++)
+        //        if (items[i].itemName == name)
+        //            flag = i;
+        //    return flag;
+        //}
+        public Item GetItem(string name)
+        {
+            int flag = -1;
+            for (int i = 0; i < items.Count; i++)
+                if (items[i].itemName == name)
+                    flag = i;
+            return items[flag];
+        }
 
     }
 

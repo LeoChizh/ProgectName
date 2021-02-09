@@ -36,14 +36,13 @@ namespace ProgectName
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.Warning = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_OK = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.itemsName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemPrise = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.minusButtons = new System.Windows.Forms.DataGridViewButtonColumn();
             this.plusButtons = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -110,26 +109,26 @@ namespace ProgectName
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.itemsName,
-            this.itemPrise,
             this.minusButtons,
             this.plusButtons,
-            this.quantity});
+            this.sum});
             this.dataGridView1.Location = new System.Drawing.Point(485, 82);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(318, 326);
+            this.dataGridView1.Size = new System.Drawing.Size(259, 326);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 6;
             // 
-            // button1
+            // button_OK
             // 
-            this.button1.Location = new System.Drawing.Point(542, 451);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_OK.Location = new System.Drawing.Point(542, 451);
+            this.button_OK.Name = "button_OK";
+            this.button_OK.Size = new System.Drawing.Size(75, 23);
+            this.button_OK.TabIndex = 7;
+            this.button_OK.Text = "OK";
+            this.button_OK.UseVisualStyleBackColor = true;
+            this.button_OK.Click += new System.EventHandler(this.Button_OK_Click);
             // 
             // button2
             // 
@@ -157,12 +156,6 @@ namespace ProgectName
             this.itemsName.Name = "itemsName";
             this.itemsName.Width = 120;
             // 
-            // itemPrise
-            // 
-            this.itemPrise.HeaderText = "Цена";
-            this.itemPrise.Name = "itemPrise";
-            this.itemPrise.Width = 40;
-            // 
             // minusButtons
             // 
             this.minusButtons.HeaderText = "";
@@ -175,13 +168,13 @@ namespace ProgectName
             this.plusButtons.Name = "plusButtons";
             this.plusButtons.Width = 30;
             // 
-            // quantity
+            // sum
             // 
-            this.quantity.HeaderText = "";
-            this.quantity.Name = "quantity";
-            this.quantity.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.quantity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.quantity.Width = 75;
+            this.sum.HeaderText = "Сумма";
+            this.sum.Name = "sum";
+            this.sum.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.sum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.sum.Width = 75;
             // 
             // Form1
             // 
@@ -191,7 +184,7 @@ namespace ProgectName
             this.ClientSize = new System.Drawing.Size(815, 486);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_OK);
             this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.Warning);
@@ -217,14 +210,13 @@ namespace ProgectName
         private System.Windows.Forms.ToolStripMenuItem deleteBtn;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.VScrollBar vScrollBar1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_OK;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemsName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemPrise;
         private System.Windows.Forms.DataGridViewButtonColumn minusButtons;
         private System.Windows.Forms.DataGridViewButtonColumn plusButtons;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sum;
     }
 }
 

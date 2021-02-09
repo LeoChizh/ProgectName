@@ -17,8 +17,9 @@ namespace ProgectName
         private readonly Items items;
         private AddButton formAddButton;
         private readonly List<Button> itemsButtons;
-        int i;
         private bool _isDeleted;
+        private readonly Check check;
+        
 
         public Form1()
         {
@@ -29,13 +30,22 @@ namespace ProgectName
             RefreshFlowLayoutPanel();
             dataGridView1.CellMouseDown += DataGridView1_CellMouseDown;
             items = new Items();
-            i = 0;
+            check = new Check();
+            check.RiseCheck_Changed += Check_RiseCheck_Changed;
+           
         }
+
+        private void Check_RiseCheck_Changed(object sender, EventArgs e)
+        {
+            check.ShowInDataGridView(dataGridView1, label1);
+        }
+
+       
 
         private void DataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             
-            label1.Text = (i++).ToString();
+            label1.Text = (check.total).ToString();
         }
 
         
@@ -104,9 +114,9 @@ namespace ProgectName
             }
             else
             {
-                
                 string temp = s.Name + "\t" + s.Text + "\t" + DateTime.Now;
                 FileFunctions.WriteToBase(temp);
+                check.AddItem(items.GetItem(s.Text));
             }
 
             
@@ -128,6 +138,17 @@ namespace ProgectName
                 itemsButtons[i].Click += Form1_Click;
             }
 
+        }
+
+        private void Button_OK_Click(object sender, EventArgs e)
+        {
+            if (check.total != 0)
+            {
+                check.OrderTime = DateTime.Now;
+                check.WriteToFile_txt();
+                check.Clear();
+            }
+                
         }
     }
 }
