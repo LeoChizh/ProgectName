@@ -14,22 +14,31 @@ namespace ProgectName
     public partial class Form1 : Form
     {
         const string WarningText = "Внимание! Включен режим удаления кнопок";
-       
+        private readonly Items items;
         private AddButton formAddButton;
         private readonly List<Button> itemsButtons;
-
+        int i;
         private bool _isDeleted;
 
         public Form1()
         {
-
+           
             InitializeComponent();
             itemsButtons = new List<Button>();
             Warning.Text = string.Empty;
             RefreshFlowLayoutPanel();
-            
-
+            dataGridView1.CellMouseDown += DataGridView1_CellMouseDown;
+            items = new Items();
+            i = 0;
         }
+
+        private void DataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            
+            label1.Text = (i++).ToString();
+        }
+
+        
 
         private void FormAddButton_RaiseCustomEvent(object sender, EventArgs e)
 
@@ -44,6 +53,7 @@ namespace ProgectName
 
 
             formAddButton = new AddButton();
+            formAddButton.RaiseRefreshEvent += FormAddButton_RaiseRefreshEvent;
             
             if (e.ClickedItem.Name == "addButton")
             {
@@ -65,6 +75,11 @@ namespace ProgectName
 
         }
 
+        private void FormAddButton_RaiseRefreshEvent(object sender, ItemEventArgs e)
+        {
+            items.AddItem(e.Item);
+        }
+
         private void Form1_Click(object sender, EventArgs e)
         {
 
@@ -79,6 +94,7 @@ namespace ProgectName
                     if (flowLayoutPanel1.Controls[i].Name == s.Name)
                     { 
                         FileFunctions.DeleteString(s.Text);
+                        items.DeleteItem(s.Text);
                         RefreshFlowLayoutPanel();
                     }
                         

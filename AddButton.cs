@@ -33,29 +33,33 @@ namespace ProgectName
             }
 
         }
-
-        public event EventHandler RaiseRefreshEvent;
+        #region Event
+        public event EventHandler<ItemEventArgs> RaiseRefreshEvent;
 
         private void Button_OK_Click(object sender, EventArgs e)
         {
             if (int.TryParse(textBox2.Text, out int prise)){
                 string buttonName = Functions.CreateButtonName(FileFunctions.NumberOfButtonsInConfigFile());
                 FileFunctions.Write(textBox1.Text + "\t" + buttonName + '\t' + prise);
-                OnRaiseRefreshEvent(new EventArgs());
+                Item item = new Item
+                {
+                    itemButtonName = buttonName,
+                    itemName = textBox1.Text,
+                    itemPrise = prise,
+                };
+
+                OnRaiseRefreshEvent(new ItemEventArgs(item));
                 Close();
             }
             else 
                 MessageBox.Show("Неправильный формат цены", "Ошибка ввода", MessageBoxButtons.OK);
         }
         
-        protected virtual void OnRaiseRefreshEvent(EventArgs e)
+        protected virtual void OnRaiseRefreshEvent(ItemEventArgs e)
         {
-            // Make a temporary copy of the event to avoid possibility of
-            // a race condition if the last subscriber unsubscribes
-            // immediately after the null check and before the event is raised.
             RaiseRefreshEvent?.Invoke(this, e);
         }
-        
+        #endregion 
         private void Button_Cancel_Click(object sender, EventArgs e)
         {
             Close();

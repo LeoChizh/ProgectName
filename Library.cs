@@ -12,8 +12,8 @@ namespace ProgectName
     public static class FileFunctions
     {
 
-        const string _path = "Config.txt";
-        const string _pathBase = "TextBase.txt";
+        public const string _path = "Config.txt";
+        public const string _pathBase = "TextBase.txt";
 
         public static void Write(string s)
         {
@@ -47,6 +47,7 @@ namespace ProgectName
             }
             sr.Close();
         }
+
 
         public static void DeleteString(string buttonText)
         {
