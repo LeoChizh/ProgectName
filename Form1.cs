@@ -35,6 +35,8 @@ namespace ProgectName
            
         }
 
+       
+
         private void Check_RiseCheck_Changed(object sender, EventArgs e)
         {
             check.ShowInDataGridView(dataGridView1, label1);
@@ -45,7 +47,12 @@ namespace ProgectName
         private void DataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             
-            label1.Text = (check.total).ToString();
+            if (e.ColumnIndex == 1)
+                check.AddItem(e.RowIndex);
+            if (e.ColumnIndex == 2)
+                check.DeleteItem(e.RowIndex);
+            
+
         }
 
         
@@ -149,6 +156,14 @@ namespace ProgectName
                 check.Clear();
             }
                 
+        }
+
+        private void button_Cancel_Click(object sender, EventArgs e)
+        {
+            if (check.total != 0)
+            {
+                check.Clear();
+            }
         }
     }
 }

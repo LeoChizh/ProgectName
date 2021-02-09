@@ -31,8 +31,7 @@ namespace ProgectName
                 int i = items.IndexOf(item);
                 quantity[i]++;
                 multiply[i] = quantity[i] * items[i].itemPrise;
-                for (i = 0, total = 0; i < items.Count; i++)
-                    total += multiply[i];
+                total += item.itemPrise;
             }
             else
             {
@@ -60,6 +59,39 @@ namespace ProgectName
 
         }
 
+        internal void AddItem(int rowIndex)
+        {
+            if (rowIndex < items.Count)
+            {
+                quantity[rowIndex]++;
+                multiply[rowIndex] = quantity[rowIndex] * items[rowIndex].itemPrise;
+                total += items[rowIndex].itemPrise;
+            }
+            RiseCheck_Changed(this, new EventArgs());
+        }
+
+        internal void DeleteItem(int rowIndex)
+        {
+            if (rowIndex < items.Count)
+            {
+                if (quantity[rowIndex] == 1)
+                {
+                    total -= items[rowIndex].itemPrise;
+                    items.RemoveAt(rowIndex);
+                    quantity.RemoveAt(rowIndex);
+                    multiply.RemoveAt(rowIndex);
+                    
+                }
+                else
+                {
+                    quantity[rowIndex]--;
+                    multiply[rowIndex] = quantity[rowIndex] * items[rowIndex].itemPrise;
+                    total -= items[rowIndex].itemPrise;
+                }
+            }
+            RiseCheck_Changed(this, new EventArgs());
+        }
+
         protected virtual void OnRiseCheck_Changed(EventArgs e)
         {
             RiseCheck_Changed?.Invoke(this, e);
@@ -72,18 +104,17 @@ namespace ProgectName
                 int i = items.IndexOf(item);
                 if (quantity[i] == 1)
                 {
+                    total -= items[i].itemPrise;
                     items.RemoveAt(i);
                     quantity.RemoveAt(i);
                     multiply.RemoveAt(i);
-                    for (i = 0, total = 0; i < items.Count; i++)
-                        total += multiply[i];
+                    
                 }
                 else
                 {
                     quantity[i]--;
                     multiply[i] = quantity[i] * items[i].itemPrise;
-                    for (i = 0, total = 0; i < items.Count; i++)
-                        total += multiply[i];
+                    total -= items[i].itemPrise;
                 }
                 RiseCheck_Changed(this, new EventArgs());
             }

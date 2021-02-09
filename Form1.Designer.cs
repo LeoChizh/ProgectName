@@ -36,13 +36,13 @@ namespace ProgectName
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.Warning = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button_OK = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.itemsName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.minusButtons = new System.Windows.Forms.DataGridViewButtonColumn();
             this.plusButtons = new System.Windows.Forms.DataGridViewButtonColumn();
             this.sum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button_OK = new System.Windows.Forms.Button();
+            this.button_Cancel = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -120,36 +120,6 @@ namespace ProgectName
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 6;
             // 
-            // button_OK
-            // 
-            this.button_OK.Location = new System.Drawing.Point(542, 451);
-            this.button_OK.Name = "button_OK";
-            this.button_OK.Size = new System.Drawing.Size(75, 23);
-            this.button_OK.TabIndex = 7;
-            this.button_OK.Text = "OK";
-            this.button_OK.UseVisualStyleBackColor = true;
-            this.button_OK.Click += new System.EventHandler(this.Button_OK_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(669, 451);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(617, 422);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 21);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Сумма";
-            // 
             // itemsName
             // 
             this.itemsName.HeaderText = "Наименование";
@@ -160,12 +130,16 @@ namespace ProgectName
             // 
             this.minusButtons.HeaderText = "";
             this.minusButtons.Name = "minusButtons";
+            this.minusButtons.Text = "+";
+            this.minusButtons.UseColumnTextForButtonValue = true;
             this.minusButtons.Width = 30;
             // 
             // plusButtons
             // 
             this.plusButtons.HeaderText = "";
             this.plusButtons.Name = "plusButtons";
+            this.plusButtons.Text = "-";
+            this.plusButtons.UseColumnTextForButtonValue = true;
             this.plusButtons.Width = 30;
             // 
             // sum
@@ -176,6 +150,37 @@ namespace ProgectName
             this.sum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.sum.Width = 75;
             // 
+            // button_OK
+            // 
+            this.button_OK.Location = new System.Drawing.Point(542, 451);
+            this.button_OK.Name = "button_OK";
+            this.button_OK.Size = new System.Drawing.Size(75, 23);
+            this.button_OK.TabIndex = 7;
+            this.button_OK.Text = "OK";
+            this.button_OK.UseVisualStyleBackColor = true;
+            this.button_OK.Click += new System.EventHandler(this.Button_OK_Click);
+            // 
+            // button_Cancel
+            // 
+            this.button_Cancel.Location = new System.Drawing.Point(669, 451);
+            this.button_Cancel.Name = "button_Cancel";
+            this.button_Cancel.Size = new System.Drawing.Size(75, 23);
+            this.button_Cancel.TabIndex = 8;
+            this.button_Cancel.Text = "Отмена";
+            this.button_Cancel.UseVisualStyleBackColor = true;
+            this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(617, 422);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 21);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Сумма:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -183,7 +188,7 @@ namespace ProgectName
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(815, 486);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.button_OK);
             this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.dataGridView1);
@@ -211,7 +216,7 @@ namespace ProgectName
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.Button button_OK;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button_Cancel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemsName;
         private System.Windows.Forms.DataGridViewButtonColumn minusButtons;
