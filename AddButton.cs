@@ -34,16 +34,13 @@ namespace ProgectName
 
         }
         #region Event
-        public event EventHandler<ItemEventArgs> RaiseRefreshEvent;
+        public event EventHandler<ItemEventArgs> RaiseAddItemEvent;
 
         private void Button_OK_Click(object sender, EventArgs e)
         {
             if (int.TryParse(textBox2.Text, out int prise)){
-                string buttonName = Functions.CreateButtonName(FileFunctions.NumberOfButtonsInConfigFile());
-                FileFunctions.Write(textBox1.Text + "\t" + buttonName + '\t' + prise);
                 Item item = new Item
                 {
-                    itemButtonName = buttonName,
                     itemName = textBox1.Text,
                     itemPrise = prise,
                 };
@@ -57,7 +54,7 @@ namespace ProgectName
         
         protected virtual void OnRaiseRefreshEvent(ItemEventArgs e)
         {
-            RaiseRefreshEvent?.Invoke(this, e);
+            RaiseAddItemEvent?.Invoke(this, e);
         }
         #endregion 
         private void Button_Cancel_Click(object sender, EventArgs e)

@@ -30,8 +30,7 @@ namespace ProgectName
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.addButton = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.editSections = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.Warning = new System.Windows.Forms.Label();
@@ -51,8 +50,7 @@ namespace ProgectName
             // 
             this.menuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addButton,
-            this.deleteBtn});
+            this.editSections});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(815, 24);
@@ -60,17 +58,11 @@ namespace ProgectName
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MenuStrip1_ItemClicked);
             // 
-            // addButton
+            // editSections
             // 
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(80, 20);
-            this.addButton.Text = "Add button";
-            // 
-            // deleteBtn
-            // 
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(75, 20);
-            this.deleteBtn.Text = "Del button";
+            this.editSections.Name = "editSections";
+            this.editSections.Size = new System.Drawing.Size(86, 20);
+            this.editSections.Text = "Edit Sections";
             // 
             // flowLayoutPanel1
             // 
@@ -168,7 +160,7 @@ namespace ProgectName
             this.button_Cancel.TabIndex = 8;
             this.button_Cancel.Text = "Отмена";
             this.button_Cancel.UseVisualStyleBackColor = true;
-            this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
+            this.button_Cancel.Click += new System.EventHandler(this.Button_Cancel_Click);
             // 
             // label1
             // 
@@ -209,10 +201,8 @@ namespace ProgectName
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem addButton;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label Warning;
-        private System.Windows.Forms.ToolStripMenuItem deleteBtn;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.Button button_OK;
@@ -222,6 +212,7 @@ namespace ProgectName
         private System.Windows.Forms.DataGridViewButtonColumn minusButtons;
         private System.Windows.Forms.DataGridViewButtonColumn plusButtons;
         private System.Windows.Forms.DataGridViewTextBoxColumn sum;
+        private System.Windows.Forms.ToolStripMenuItem editSections;
     }
 }
 
